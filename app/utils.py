@@ -1,4 +1,3 @@
-
 MAX_LENGTH=1000000
 
 # Check if the file is too large, and call chunk_text to split into chunks if needed
