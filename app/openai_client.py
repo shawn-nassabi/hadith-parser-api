@@ -6,7 +6,9 @@ from pydantic import BaseModel
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from openai import OpenAIError  # or the specific exception your client throws
 import json
-
+# gpt-4o-2024-08-06
+# gpt-4o-mini-2024-07-18
+# gpt-4.1-2025-04-14
 LLM_MODEL="gpt-4o-mini-2024-07-18"
 
 load_dotenv()
