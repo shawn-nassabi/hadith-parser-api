@@ -3,6 +3,21 @@ import os
 import pandas as pd
 import io
 import requests
+from random import randrange
+import sys
+
+# total arguments
+n = len(sys.argv)
+print("Total arguments passed:", n)
+
+rand_seed = randrange(100)
+if n >= 1:
+	print("random seed = ", sys.argv[1])
+	rand_seed = int(sys.argv[1])
+result_number = ""
+if n >= 2:
+	print("result_number = ", sys.argv[2])
+	result_number = int(sys.argv[2])
 
 # Define the file paths for your two CSV files
 hadith_path = "datasets/kaggle/kaggle_hadiths_clean.csv"
@@ -29,7 +44,7 @@ except Exception as e:
 	print(f"An error occurred while reading {rawis_path}: {e}")
 
 sample_size = 10
-first_10_elements = hadith_df[['chain_indx', 'text_ar', 'source', 'chapter_no', 'hadith_no']].sample(n=sample_size)
+first_10_elements = hadith_df[['chain_indx', 'text_ar', 'source', 'chapter_no', 'hadith_no']].sample(n=sample_size,random_state=rand_seed)
 
 
 
@@ -86,7 +101,7 @@ total_ground_truth = 0
 total_matched = 0
 exact_match_count = 0
 
-with open("hadith_api_comparison_output.txt", "w", encoding="utf-8") as f:
+with open("results/seed_"+str(rand_seed)+"_result_"+str(result_number)+".txt", "w", encoding="utf-8") as f:
 	print("\n=== Comparison Results ===")
 	f.write("\n=== Comparison Results ===\n")
 	
