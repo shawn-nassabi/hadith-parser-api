@@ -23,6 +23,21 @@ output_file = filename
 openai_api_key = os.getenv("OPENAI_API_KEY") 
 
 openai_client = OpenAI(api_key=openai_api_key)
+from random import randrange
+import sys
+
+# total arguments
+n = len(sys.argv)
+print("Total arguments passed:", n)
+
+rand_seed = randrange(100)
+if n >= 1:
+	print("random seed = ", sys.argv[1])
+	rand_seed = int(sys.argv[1])
+result_number = ""
+if n >= 2:
+	print("result_number = ", sys.argv[2])
+	result_number = int(sys.argv[2])
 
 # Define the file paths for your two CSV files
 hadith_path = "datasets/kaggle/kaggle_hadiths_clean.csv"
@@ -78,7 +93,7 @@ except Exception as e:
 	print(f"An error occurred while reading {rawis_path}: {e}")
 
 sample_size = 10
-first_10_elements = hadith_df[['chain_indx', 'text_ar', 'source', 'chapter_no', 'hadith_no']].sample(n=sample_size)
+first_10_elements = hadith_df[['chain_indx', 'text_ar', 'source', 'chapter_no', 'hadith_no']].sample(n=sample_size,random_state=rand_seed)
 
 
 
