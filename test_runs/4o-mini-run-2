@@ -1,0 +1,63 @@
+
+=== Comparison Results ===
+
+🔹 Hadith: ('Sunan Ibn Majah', 5, 1112)
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'سفيان بن عيينة', 'يحيى بن سعيد', 'أبو بكر بن محمد بن عمرو بن حزم', 'عمر بن عبد العزيز', 'أبو بكر بن عبد الرحمن بن الحارث بن هشام', 'أبو هريرة']
+Ground truth:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', "Sufyan bin 'Uyaynah سفيان بن عيينة", "Yahya bin Sa'id al-Ansari يحيى بن سعيد الأنصاري", "Abu Bakr bin Muhammad bin 'Amr bin Hazm أبو بكر بن محمد بن عمرو بن حزم", 'Umar bin ‘Abdul-‘Aziz عمر بن عبد العزيز', "Abu Bakr bin 'Abdur Rahman أبو بكر بن عبد الرحمن بن الحارث بن هشام", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 7/7 narrators
+
+🔹 Hadith: ('Sahih Bukhari', 58, 3179)
+Extracted sanad: ['محمد بن كثير', 'سفيان', 'الأعمش', 'إبراهيم التيمي', 'أبيه', 'علي بن أبي طالب']
+Ground truth:    ["Muhammad bin Kathir bin Abi 'Ata' محمد بن كثير بن أبي عطاء الثقفي", 'Sufyan bin Sa‘id Ath-Thawri سفيان الثوري', "Sulaiman al-A'mash الأعمش / سليمان بن مهران", 'Ibrahim bin Yazid - Taym al-Rabab إبراهيم بن يزيد بن شريك  تيم الرباب', 'Yazid bin Sharayk bin Tariq يزيد بن شريك بن طارق التيمي الكوفي', 'Ali ibn Abi Talib ( علي بن أبي طالب بن عبد المطلب ( رضي الله عنه']
+✅ Matched 5/6 narrators
+❌ Unmatched extracted names: ['أبيه']
+
+🔹 Hadith: ('Sahih Bukhari', 80, 6466)
+Extracted sanad: ['معاذ بن فضالة', 'هشام', 'يحيى', 'أبو سلمة', 'أبو هريرة']
+Ground truth:    ['', "Hisham bin Abi 'Abdullah al-Dastawa'i هشام بن أبي عبد الله الدستوائي", "Yahya bin Sa'id bin Farroukh al-Qatan يحيى بن سعيد بن فروخ القطان", "Abu Salama bin 'Abdur Rahman أبو سلمة بن عبد الرحمن بن عوف", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 4/5 narrators
+❌ Unmatched extracted names: ['معاذ بن فضالة']
+
+🔹 Hadith: ('Sunan Ibn Majah', 23, 2857)
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'وكيع', 'عبد العزيز بن عمر', 'عبد الله بن موهب', 'تميما الداري']
+Ground truth:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', "Waki' bin al-Jarrah وكيع بن الجراح", '']
+✅ Matched 2/5 narrators
+❌ Unmatched extracted names: ['عبد العزيز بن عمر', 'عبد الله بن موهب', 'تميما الداري']
+
+🔹 Hadith: ("Sunan an-Nasa'i", 38, 4135)
+Extracted sanad: ['عمرو بن يحيى', 'محبوب', 'أبو إسحاق الفزاري', 'الأوزاعي']
+Ground truth:    ["Amr bin Yahya bin 'Ammara عمرو بن يحيى بن عمارة", "Abu Salah al-Fara', Mahbub bin Musa محبوب بن موسى أبو صالح الأنطاكي الفراء", 'Ibrahim bin Muhammad bin al-Harith إبراهيم بن محمد  أبو اسحاق الفزاري', "Abdur Rahman bin 'Amr al-Awza'i عبد الرحمن بن عمرو أبو عمرو الأوزاعي"]
+✅ Matched 4/4 narrators
+
+🔹 Hadith: ("Sunan Abi Da'ud", 13, 2246)
+Extracted sanad: ['عبد العزيز بن يحيى', 'محمد بن سلمة', 'محمد بن إسحاق', 'عباس بن سهل', 'أبيه']
+Ground truth:    ["Abdul 'Aziz bin Yahya bin Yusuf عبد العزيز بن يحيى بن يوسف البكائي", 'Muhammad bin Salmah محمد بن سلمة بن عبد الله الباهلي', 'Ibn Ishaq محمد بن إسحاق بن يسار\u200e', "Abbas bin Sahl bin Sa'd عباس بن سهل بن سعد الساعدي", "Sahl bin Sa'd bin Malik ( سهل بن سعد الساعدي ( رضي الله عنه"]
+✅ Matched 4/5 narrators
+❌ Unmatched extracted names: ['أبيه']
+
+🔹 Hadith: ("Sunan Abi Da'ud", 6, 1392)
+Extracted sanad: ['محمد بن يحيى بن فارس', 'ابن أبي مريم', 'يحيى بن أيوب', 'ابن الهاد', 'نافع بن جبير بن مطعم']
+Ground truth:    ['Muhammad bin Yahya bin Faris al-Dhahli محمد بن يحيى بن فارس الذهلي', "Sa'id bin Abi Maryam سعيد بن أبي مريم", 'Yahya bin Ayoub al-Ghafiqi يحيى بن أيوب الغافقي', "Yazid bin 'Abdullah bin Usama B. al-Haad يزيد بن عبد الله بن أسامة بن الهاد", "Nafi' bin Jubayr bin Mut'im نافع بن جبير بن مطعم"]
+✅ Matched 5/5 narrators
+
+🔹 Hadith: ('Sahih Bukhari', 56, 2803)
+Extracted sanad: ['عبد الله بن يوسف', 'مالك بن أنس', 'أبو الزناد', 'الأعرج', 'أبو هريرة']
+Ground truth:    ['Abdullah bin Yusuf al-Tunaysi عبد الله بن يوسف التنيسي', 'Imam Maalik مالك بن أنس بن مالك بن أبي عامر', 'Abu al-Zanad أبو الزناد', "Abdur Rahman bin Harmaz al-A'araj عبد الرحمن بن هرمز الأعرج أبو داود", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 5/5 narrators
+
+🔹 Hadith: ('Sunan Ibn Majah', 25, 3108)
+Extracted sanad: ['علي بن محمد', 'أبو معاوية', 'حجاج', 'عطاء', 'ابن عباس']
+Ground truth:    ['Ali bin Muhammad bin Ishaq al-Tanafasi علي بن محمد بن إسحاق الطنافسي', 'Muhammad bin Khazim al-Darir محمد بن خازم  أبو معاوية الضرير', 'Hajjaj bin al-Minhal حجاج بن المنهال', "Ata' bin Abi Rabah عطاء بن أبي رباح", 'ibn Abbas ( عبد الله بن العباس بن عبد المطلب  الحبر ( رضي الله عنه']
+✅ Matched 5/5 narrators
+
+🔹 Hadith: ("Jami' al-Tirmidhi", 16, 1417)
+Extracted sanad: ['علي بن سعيد الكندي', 'ابن المبارك', 'معمر', 'بهز بن حكيم', 'أبيه', 'جده']
+Ground truth:    ["Ali bin Sa'id bin Jryr علي بن سعيد بن جرير", 'Abdullah bin Mubarak عبد الله بن المبارك', "Ma'mar bin Rashid معمر بن راشد", "Bahz bin Hakim bin Mu'awiya al-Qushayri بهز بن حكيم بن معاوية", "Hakeem bin Mu'awiyya bin Hayda حكيم بن معاوية بن حيدة القشيري"]
+✅ Matched 3/6 narrators
+❌ Unmatched extracted names: ['علي بن سعيد الكندي', 'أبيه', 'جده']
+
+=== Evaluation Metrics ===
+🔸 Precision:         0.83
+🔸 Recall:            0.88
+🔸 F1 Score:          0.85
+🔸 Exact Match Rate:  0.50 (5/10)

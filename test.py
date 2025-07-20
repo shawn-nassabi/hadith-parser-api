@@ -1,12 +1,61 @@
 import csv
+import argparse
 import os
 import pandas as pd
 import io
 import requests
+from openai import OpenAI
+
+# Parse output filename from command-line
+parser = argparse.ArgumentParser(description="Hadith API tester")
+parser.add_argument(
+    "--output",
+    type=str,
+    default="test_runs/hadith_api_comparison_output.txt",
+    help="Output filename for results (default: hadith_api_comparison_output.txt)"
+)
+args = parser.parse_args()
+filename = args.output
+if not filename.startswith("test_runs/"):
+    filename = os.path.join("test_runs", filename)
+output_file = filename
+
+openai_api_key = os.getenv("OPENAI_API_KEY") 
+
+openai_client = OpenAI(api_key=openai_api_key)
 
 # Define the file paths for your two CSV files
 hadith_path = "datasets/kaggle/kaggle_hadiths_clean.csv"
 rawis_path = "datasets/kaggle/kaggle_rawis.csv"
+
+#-------- Function to use LLM for checking if extracted sanad is valid in scenarios where the first check fails --------
+def llm_name_match(extracted: str, true_names: list[str]) -> bool:
+	print('Inside LLM check for the following:\n')
+
+	print("Extracted sanad:", extracted)
+	print("true-names:", true_names)
+
+	prompt = (
+		"You are an expert in Arabic names, specifically in the context of arabic Ahadith narrators (sanad). Compare the following extracted narrator name "
+		"with the list of ground truth narrator names. Only answer 'YES' if the extracted name is a valid reference "
+		"to any of the names in the list (e.g., partial, nickname, spelling, bin/ibn variations). It could also be that the person has another valid nickname or title, so please use your knowledge to judge accordingly. Only answer 'YES' or 'NO'.\n\n"
+		f"Extracted name: {extracted}\n"
+		f"Ground truth list: {true_names}\n\n"
+		"Is the extracted name a valid match for any in the list? YES or NO:"
+	)
+	try:
+		response = openai_client.responses.create(
+			model="gpt-4o-mini-2024-07-18",
+			input=prompt,
+			temperature=0,
+		)
+		ans = response.output_text
+
+		print('LLM check said:', ans)
+		return "YES" in ans
+	except Exception as e:
+		print(f"[LLM ERROR] {e}")
+		return False  # Fail safe: don't count as match
 
 try:
 	hadith_df = pd.read_csv(hadith_path)
@@ -86,7 +135,7 @@ total_ground_truth = 0
 total_matched = 0
 exact_match_count = 0
 
-with open("hadith_api_comparison_output.txt", "w", encoding="utf-8") as f:
+with open(output_file, "w", encoding="utf-8") as f:
 	print("\n=== Comparison Results ===")
 	f.write("\n=== Comparison Results ===\n")
 	
@@ -105,15 +154,32 @@ with open("hadith_api_comparison_output.txt", "w", encoding="utf-8") as f:
 		extracted_sanad = api_result.get("sanad", [])
 
 		matches = 0
+		unmatched_names = []
 		for name in extracted_sanad:
-			if any(name in full_name for full_name in true_names):
-				matches += 1
+			ex_tokens = name.split()  # e.g. ["ثابت", "البناني"]
+			found = False
+			for full_name in true_names:
+				true_tokens = full_name.split()  # e.g. ["ثابت","بن","أسلم","البناني"]
+				# check that every token in the extracted snippet appears somewhere
+				if all(tok in true_tokens for tok in ex_tokens):
+					matches += 1
+					found = True
+					break
+			# Fuzzy fallback with LLM
+			if not found:
+				if llm_name_match(name, true_names):
+					matches += 1
+					found = True
+			if not found:
+					unmatched_names.append(name)
+					
 
 		# Metrics
 		total_extracted += len(extracted_sanad)
-		total_ground_truth += len(true_names)
+		unique_true_names = list(set(name.strip() for name in true_names))
+		total_ground_truth += len(unique_true_names)
 		total_matched += matches
-		if matches == len(true_names) and len(extracted_sanad) == len(true_names):
+		if matches == len(unique_true_names) and len(extracted_sanad) == len(unique_true_names):
 			exact_match_count += 1
 
 		output = (
@@ -122,6 +188,10 @@ with open("hadith_api_comparison_output.txt", "w", encoding="utf-8") as f:
 			f"Ground truth:    {true_names}\n"
 			f"✅ Matched {matches}/{len(extracted_sanad)} narrators\n"
 		)
+		
+		if unmatched_names:
+			output += f"❌ Unmatched extracted names: {unmatched_names}\n"
+
 		print(output)
 		f.write(output)
 

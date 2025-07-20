@@ -1,0 +1,65 @@
+
+=== Comparison Results ===
+
+🔹 Hadith: ("Jami' al-Tirmidhi", 17, 1452)
+Extracted sanad: ['علي بن حجر', 'هشيم', 'أبو بشر', 'حبيب بن سالم', 'النعمان بن بشير']
+Ground truth:    ['Ali bin Hujr bin Iyas bin Maqatil علي بن حجر بن إياس بن مقاتل', 'Hashaym bin Bashayr bin al-Qasim هشيم بن بشير بن القاسم', "Ja'far bin Iyas (Abi Wahshiyya) جعفر بن إياس / بن أبي وحشية", 'Habib bin Salm al-Ansari حبيب بن سالم الأنصاري مولى', "al-Nu'man bin Bashir ibn Sa'd ( النعمان بن بشير ( رضي الله عنه", 'Salmah bin al-Mahbaq ( سلمة بن المحبق ( رضي الله عنه', "Muhammad bin Ja'far Ghandar محمد بن جعفر غندر صاحب الكرابيس"]
+✅ Matched 4/5 narrators
+❌ Unmatched extracted names: ['أبو بشر']
+
+🔹 Hadith: ('Sahih Bukhari', 83, 6787)
+Extracted sanad: ['إبراهيم بن موسى', 'هشام', 'ابن جريج', 'سليمان الأحول', 'طاوس', 'ابن عباس']
+Ground truth:    ["Ibrahim bin Musa al-Razi al-Fara' إبراهيم بن موسى الرازي الفراء", "Hisham bin Abi 'Abdullah al-Dastawa'i هشام بن أبي عبد الله الدستوائي", 'Ibn Jurayj ابن جريج', 'Sulaiman bin Abi Muslim al-Ahwal سليمان بن أبي مسلم سليمان الأحول', 'Tawus bin Kaysan طاوس', 'ibn Abbas ( عبد الله بن العباس بن عبد المطلب  الحبر ( رضي الله عنه']
+✅ Matched 6/6 narrators
+
+🔹 Hadith: ("Sunan an-Nasa'i", 44, 4525)
+Extracted sanad: ['محمد بن عبد الأعلى', 'خالد', 'هشام', 'أبي الزبير', 'جابر']
+Ground truth:    ["Muhammad bin 'Abdul A'la محمد بن عبد الأعلى", "Khalid bin 'Abdullah al-Tahan خالد بن عبد الله بن عبد الرحمن الطحان", "Hisham bin Abi 'Abdullah al-Dastawa'i هشام بن أبي عبد الله الدستوائي", 'Muhammad bin Muslim bin Tadras محمد بن مسلم بن تدرس  أبو الزبير', "Jabir ibn 'Abdullah ( جابر بن عبد الله بن عمرو السلمي الأنصاري ( رضي الله عنه"]
+✅ Matched 5/5 narrators
+
+🔹 Hadith: ("Jami' al-Tirmidhi", 2, 385)
+Extracted sanad: ['سويد بن نصر', 'عبد الله بن المبارك', 'الليث بن سعد', 'عبد ربه بن سعيد', 'عمران بن أبي أنس', 'عبد الله بن نافع ابن العمياء', 'ربيعة بن الحارث', 'الفضل بن عباس']
+Ground truth:    ['Swyd bin Nsr bin Swyd سويد بن نصر بن سويد', 'Abdullah bin Mubarak عبد الله بن المبارك', "al-Laith bin Sa'd الليث بن سعد", "Abd Rabba bin Sa'id bin Qays bin 'Amr عبد ربه بن سعيد بن قيس", 'Imran bin Abi Anas عمران بن أبي أنس القرشي العامري', "Abdullah bin Naf' عبد الله بن نافع بن العمياء", "Rabi'ah ibn al-Harith ( ربيعة بن الحارث بن عبد المطلب ( رضي الله عنه", "Fadl ibn al-'Abbas ( الفضل بن العباس بن عبد المطلب ( رضي الله عنه"]
+✅ Matched 8/8 narrators
+
+🔹 Hadith: ("Sunan Abi Da'ud", 14, 2429)
+Extracted sanad: ['مسدد', 'وقيتة بن سعيد', 'أبو عوانة', 'أبي بشر', 'حميد بن عبد الرحمن', 'أبي هريرة']
+Ground truth:    ['Masdad bin Masrhad مسدد بن مسرهد بن مسربل', "Qutayba bin Sa'id bin Jamil قتيبة بن سعيد بن جميل", "Wadah bin 'Abdullah al-Yashkari وضاح بن عبد الله اليشكري  أبو عوانة", "Ja'far bin Iyas (Abi Wahshiyya) جعفر بن إياس / بن أبي وحشية", "Humaid bin 'Abdur Rahman حميد بن عبد الرحمن بن عوف الزهرى", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 4/6 narrators
+❌ Unmatched extracted names: ['وقيتة بن سعيد', 'أبي بشر']
+
+🔹 Hadith: ("Jami' al-Tirmidhi", 36, 2412)
+Extracted sanad: ['محمد بن بشار', 'غير', 'واحد', 'محمد بن يزيد بن خنيس المكي', 'سعيد بن حسان المخزومي', 'أم صالح', 'صفية بنت شيبة', 'أم حبيبة']
+Ground truth:    ['Muhammad bin Bashar Bindar محمد بن بشار بندار', "Muhammad bin Sa'id bin Yazid محمد بن سعيد بن يزيد بن إبراهيم", "Sa'id bin Hsan al-Mkhzwmy سعيد بن حسان المخزومي المكي", "Safiyya bint Shayba bin 'Uthman ( صفية بنت شيبة بن عثمان العبدرية ( رضي الله عنها"]
+✅ Matched 3/8 narrators
+❌ Unmatched extracted names: ['غير', 'واحد', 'محمد بن يزيد بن خنيس المكي', 'أم صالح', 'أم حبيبة']
+
+🔹 Hadith: ("Sunan an-Nasa'i", 34, 3720)
+Extracted sanad: ['محمد بن عبد الأعلى', 'خالد', 'شعبة', 'عمرو بن دينار', 'طاوس', 'زيد بن ثابت', 'النبي صلى الله عليه وسلم']
+Ground truth:    ["Muhammad bin 'Abdul A'la محمد بن عبد الأعلى", "Khalid bin 'Abdullah al-Tahan خالد بن عبد الله بن عبد الرحمن الطحان", "Shu'bah bin al-Hajjaj شعبة بن الحجاج", 'Amr bin Dinar عمرو بن دينار الأثرم الجمحي', 'Tawus bin Kaysan طاوس', 'Zayd ibn Thabit ( زيد بن ثابت بن الضحاك بن زيد ( رضي الله عنه']
+✅ Matched 6/7 narrators
+❌ Unmatched extracted names: ['النبي صلى الله عليه وسلم']
+
+🔹 Hadith: ('Sahih Muslim', 16, 3003)
+Extracted sanad: ['ابن نمير', 'أبيه', 'عبد الملك بن أبي سليمان', 'عطاء', 'جابر بن عبد الله', 'رسول الله صلى الله عليه وسلم']
+Ground truth:    ["Muhammad bin 'Abdullah bin Numayr محمد بن عبد الله بن نمير", 'Abdullah bin Numayr عبد الله بن نمير', 'Abdul Malik bin Aby عبد الملك بن أبي سليمان', "Ata' bin Abi Rabah عطاء بن أبي رباح", "Jabir ibn 'Abdullah ( جابر بن عبد الله بن عمرو السلمي الأنصاري ( رضي الله عنه"]
+✅ Matched 4/6 narrators
+❌ Unmatched extracted names: ['أبيه', 'رسول الله صلى الله عليه وسلم']
+
+🔹 Hadith: ('Sunan Ibn Majah', 25, 3090)
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'محمد بن مصعب', 'عبد الرحمن بن إبراهيم الدمشقي (دحيما)', 'الوليد بن مسلم', 'الأوزاعي', 'يحيى بن أبي كثير', 'عكرمة', 'ابن عباس', 'عمر بن الخطاب', 'رسول الله صلى الله عليه وسلم']
+Ground truth:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', "Muhammad bin Mus'ab bin Sdqh محمد بن مصعب بن صدقة", 'al-Waleed bin Muslim bin Shahab الوليد بن مسلم بن شهاب', "Abdur Rahman bin 'Amr al-Awza'i عبد الرحمن بن عمرو أبو عمرو الأوزاعي", 'Yahya bin Abi Kathir يحيى بن أبي كثير الطائي', 'Ikrama عكرمة', 'ibn Abbas ( عبد الله بن العباس بن عبد المطلب  الحبر ( رضي الله عنه', 'Umar ibn al-Khattab ( عمر بن الخطاب بن نفيل ( رضي الله عنه']
+✅ Matched 8/10 narrators
+❌ Unmatched extracted names: ['عبد الرحمن بن إبراهيم الدمشقي (دحيما)', 'رسول الله صلى الله عليه وسلم']
+
+🔹 Hadith: ("Sunan Abi Da'ud", 33, 4010)
+Extracted sanad: ['محمد بن قدامة', 'جرير', 'محمد بن المثنى', 'محمد بن جعفر', 'شعبة', 'منصور', 'سالم بن أبي الجعد']
+Ground truth:    ["Jarir bin 'Abdul Hameed al-Razi جرير بن عبد الحميد أبو عبد الله الضبي", 'Muhammad bin al-Muthna - al-Zaman محمد بن المثنى أبو موسى - الزمن', "Muhammad bin Ja'far bin Abi Kathir محمد بن جعفر بن أبي كثير", "Shu'bah bin al-Hajjaj شعبة بن الحجاج", "Mansur bin al-Ma'tamar al-Salmi منصور بن المعتمر بن عبد الله السلمي", "Salm bin Abi al-Ja'd سالم بن أبي الجعد", 'Muhammad bin al-Muthna - al-Zaman محمد بن المثنى أبو موسى - الزمن', "Abu al-Malih ('Amir) bin Usama أبو المليح بن أسامة"]
+✅ Matched 6/7 narrators
+❌ Unmatched extracted names: ['محمد بن قدامة']
+
+=== Evaluation Metrics ===
+🔸 Precision:         0.79
+🔸 Recall:            0.87
+🔸 F1 Score:          0.83
+🔸 Exact Match Rate:  0.30 (3/10)

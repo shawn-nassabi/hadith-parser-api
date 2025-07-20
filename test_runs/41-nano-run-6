@@ -1,0 +1,54 @@
+
+=== Comparison Results ===
+
+🔹 Hadith: ("Sunan Abi Da'ud", 9, 1645)
+Extracted sanad: ['مسدد', 'عبد الله بن داود', 'عبد الملك بن حبيب أبو مروان', 'ابن المبارك', 'بشير بن سلمان', 'سيار أبو حمزة', 'طارق', 'ابن مسعود']
+Ground truth:    ['Masdad bin Masrhad مسدد بن مسرهد بن مسربل', "Abdullah bin Da'ud al-Kharaybi عبد الله بن داود أبو عبد الرحمن الخريبي", 'Abdullah bin Mubarak عبد الله بن المبارك', "Tarq bin 'Abdur Rahman طارق بن عبد الرحمن البجلي الأحمسي الكوفي", "ibn Mas'ud ( عبد الله بن مسعود ( رضي الله عنه"]
+✅ Matched 5/8 narrators
+❌ Unmatched extracted names: ['عبد الملك بن حبيب أبو مروان', 'بشير بن سلمان', 'سيار أبو حمزة']
+
+🔹 Hadith: ('Sahih Muslim', 13, 2417)
+Extracted sanad: ['محمد بن رافع', 'عبد الرزاق', 'معمر', 'همام بن منبه', 'أبو هريرة', 'محمد']
+Ground truth:    ["Muhammad bin Rafa'i محمد بن رافع", 'Abdur-Razzaq عبد الرزاق بن همام', "Ma'mar bin Rashid معمر بن راشد", 'Hamam bin Munabbih همام بن منبه بن كامل', 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 6/6 narrators
+
+🔹 Hadith: ('Sahih Bukhari', 25, 1647)
+Extracted sanad: ['يحيى بن بكير', 'الليث', 'يونس', 'ابن شهاب', 'حميد بن عبد الرحمن', 'أبو هريرة', 'أبو بكر الصديق']
+Ground truth:    ['Yahya bin Yahya bin Bukayr يحيى بن يحيى بن بكير', "al-Laith bin Sa'd الليث بن سعد", 'Yonus bin Yazid bin Abi al-Nijad يونس بن يزيد بن أبي النجاد', 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', "Humaid bin 'Abdur Rahman حميد بن عبد الرحمن بن عوف الزهرى", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 6/7 narrators
+❌ Unmatched extracted names: ['أبو بكر الصديق']
+
+🔹 Hadith: ("Sunan an-Nasa'i", 27, 3466)
+Extracted sanad: ['عبد العزيز بن أبي سلمة', 'إبراهيم بن سعد', 'الزهري', 'سهل بن سعد', 'عايصم بن عدي', 'عويمر']
+Ground truth:    ["Muhammad bin Ma'mar bin Rabi' محمد بن معمر بن ربعي القيسي البحراني", "Abu Da'ud أبو داود السجستاني الأزدي", "Abdul 'Aziz bin Abi Salma b. 'Ubaidulla عبد العزيز بن أبي سلمة بن عبيد الله", "Ibrahim bin Sa'd bin Ibrahim إبراهيم بن سعد بن إبراهيم", 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', "Sahl bin Sa'd bin Malik ( سهل بن سعد الساعدي ( رضي الله عنه", "Asim bin 'Adiy bin al-Jadd ( عاصم بن عدي بن الجد البلوي ( رضي الله عنه"]
+✅ Matched 5/6 narrators
+❌ Unmatched extracted names: ['عويمر']
+
+🔹 Hadith: ('Sahih Bukhari', 81, 6534)
+Extracted sanad: ['هدبة بن خالد', 'همام بن يحيى', 'قتادة', 'أنس بن مالك']
+Ground truth:    ['Hadba bin Khalid bin al-Aswad هدبة بن خالد بن الأسود', 'Hmam bin Yahya bin Dinar همام بن يحيى بن دينار', 'Qatada قتادة']
+✅ Matched 3/4 narrators
+❌ Unmatched extracted names: ['أنس بن مالك']
+
+🔹 Hadith: ("Jami' al-Tirmidhi", 49, 4160)
+Extracted sanad: ['محمد بن بشار', 'عبد الوهاب بن عبد المجيد الثقفي', 'خالد الحذاء', 'أبي قلابة', 'أنس بن مالك']
+Ground truth:    ['Muhammad bin Bashar Bindar محمد بن بشار بندار', "Khalid bin Mahran al-Hadha' خالد بن مهران الحذاء", "Abu Qalaba, 'Abdullah bin Zayd al-Jarmi عبد الله بن زيد بن عمرو", 'Anas bin Malik ( أنس بن مالك بن النضر ( رضي الله عنه']
+✅ Matched 3/5 narrators
+❌ Unmatched extracted names: ['عبد الوهاب بن عبد المجيد الثقفي', 'أبي قلابة']
+
+🔹 Hadith: ("Jami' al-Tirmidhi", 37, 2612)
+Extracted sanad: ['أبو كريب', 'وكيع', 'علي بن علي', 'الحسن', 'أبي هريرة']
+Ground truth:    ["Abu Karayb, Muhammad bin al-'Ala' محمد بن العلاء - أبو كريب", "Waki' bin al-Jarrah وكيع بن الجراح", 'al-Hasan al-Basri الحسن البصري', 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 4/5 narrators
+❌ Unmatched extracted names: ['علي بن علي']
+
+🔹 Hadith: ('Sahih Muslim', 56, 7620)
+Extracted sanad: ['شيبان بن فروخ', 'همام', 'إسحاق بن عبد الله بن أبي طلحة', 'عبد الرحمن بن أبي عمرة', 'أبو هريرة']
+Ground truth:    ['Shayban bin Farroukh شيبان بن فروخ / أبي شيبة', 'Hmam bin Yahya bin Dinar همام بن يحيى بن دينار', "Ishaq bin 'Abdullah bin Abi Talha إسحاق بن عبد الله بن أبي طلحة", "Abdur Rahman bin Abi 'Amra ( عبد الرحمن بن أبي عمرة الأنصاري ( رضي الله عنه", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 5/5 narrators
+
+=== Evaluation Metrics ===
+🔸 Precision:         0.80
+🔸 Recall:            0.95
+🔸 F1 Score:          0.87
+🔸 Exact Match Rate:  0.12 (1/8)

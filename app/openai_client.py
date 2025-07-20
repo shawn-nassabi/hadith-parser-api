@@ -9,6 +9,7 @@ import json
 # gpt-4o-2024-08-06
 # gpt-4o-mini-2024-07-18
 # gpt-4.1-2025-04-14
+# gpt-4.1-nano-2025-04-14
 LLM_MODEL="gpt-4o-mini-2024-07-18"
 
 load_dotenv()
@@ -170,16 +171,30 @@ def extract_sanad_batch(hadith_entries: list[dict], with_english: bool = False) 
       )
     else:
        system_prompt = (
-          "You are an expert in Islamic Hadith sciences. "
-          "You will be given multiple hadith entries with metadata and Arabic text. "
+          "You are an expert in Islamic Hadith sciences."
+          "You will be given multiple hadith entries with metadata and Arabic text."
           "For each entry, extract into the JSON the following fields:\n"
           "- source: the hadith source name\n"
           "- chapter_no: the chapter number\n"
           "- hadith_no: the hadith number\n"
           "- sanad: list of narrators (Arabic) in order.\n"
           "- sanad_sentence: the exact sentence containing the sanad. For example: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب  رضى الل\n"
+          "Here are a few examples of input and expected valid output:" 
+          "START OF EXAMPLE 1:" 
+          "### Input:" 
+          "Source: Sahih Bukhari" 
+          "Chapter: 1" 
+          "Hadith No: 1" 
+          "Text: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب  رضى الله عنه  على المنبر قال سمعت رسول الله صلى الله عليه وسلم يقول إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى، فمن كانت هجرته إلى دنيا يصيبها أو إلى امرأة ينكحها فهجرته إلى ما هاجر إليه"
+          "### Expected Output:"
+          "source: Sahih Bukhari"
+          "chapter_no: 1"
+          "hadith_no: 1"
+          "sanad: [\"عبد الله بن الزبير\", \"سفيان بن عيينة\", \"يحيى بن سعيد الأنصاري\", \"محمد بن إبراهيم بن الحارث\", \"علقمة بن وقاص\", \"عمر بن الخطاب\"]"
+          "sanad_sentence: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب"
+          "END OF EXAMPLE 1"
           "Extract the data from the ahadith into the given structure."
-      )
+        )
 
     # Build a single prompt by joining each entry’s metadata + text.
     prompt_parts = []
