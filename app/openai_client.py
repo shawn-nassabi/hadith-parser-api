@@ -89,34 +89,22 @@ def extract_hadith_info_from_txt_file(text: str, include_english: bool = True) -
   
   # user_prompt = f"""Extract structured data for all ahadith in the following text:\n\n{text}\n\n"""
   user_prompt = f"""{text}"""
-  if include_english:
-    response = client.responses.parse(
+
+  system = system_prompt if include_english else system_prompt_ar
+  fmt = AllHadith if include_english else AllHadithArabic
+
+  response = client.responses.parse(
       model=LLM_MODEL,
       input=[
-        {
-          "role": "system",
-          "content": system_prompt
-        },
-        {"role": "user", "content": user_prompt},
+          {"role": "system", "content": system},
+          {"role": "user", "content": user_prompt},
       ],
-      text_format=AllHadith,
-    )
-    # print(response)
-    return response.output_parsed
-  else:
-    response = client.responses.parse(
-      model=LLM_MODEL,
-      input=[
-        {
-          "role": "system",
-          "content": system_prompt_ar
-        },
-        {"role": "user", "content": user_prompt},
-      ],
-      text_format=AllHadithArabic,
-    )
-    print(response)
-    return response.output_parsed
+      text_format=fmt,
+  )
+
+  print(response)
+
+  return response.output_parsed
 
 
 
@@ -128,24 +116,18 @@ def extract_hadith_info_from_txt_file(text: str, include_english: bool = True) -
     retry=retry_if_exception_type(OpenAIError)
 )
 def _call_openai_with_retry(system_prompt: str, user_prompt: str, with_english: bool) -> AllHadithSanad:
-    if with_english:
-      response = client.responses.parse(
-          model=LLM_MODEL,
-          input=[
-              {"role": "system", "content": system_prompt},
-              {"role": "user", "content": user_prompt},
-          ],
-          text_format=AllHadithSanadWithEnglish,
-      )
-    else:
-       response = client.responses.parse(
-          model=LLM_MODEL,
-          input=[
-              {"role": "system", "content": system_prompt},
-              {"role": "user", "content": user_prompt},
-          ],
-          text_format=AllHadithSanad,
-      )
+    # Choose output format depending on whether english is included or not
+    fmt = AllHadithSanadWithEnglish if with_english else AllHadithSanad
+    response = client.responses.parse(
+      model=LLM_MODEL,
+      input=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+      ],
+      text_format=fmt,
+      temperature=1
+    )
+
     return response.output_parsed
 
 # For extracting the sanad
@@ -167,6 +149,22 @@ def extract_sanad_batch(hadith_entries: list[dict], with_english: bool = False) 
           "- sanad_sentence: the exact sentence containing the sanad. For example: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب  رضى الل\n"
           "- sanad_english: list of narrators translated into English (use 'ibn' not 'bin')\n"
           "- sanad_sentence_english: the translated sanad sentence\n\n"
+          "Here are a few examples of input and expected valid output:" 
+          "START OF EXAMPLE 1:" 
+          "### Input:" 
+          "Source: Sahih Bukhari" 
+          "Chapter: 1" 
+          "Hadith No: 1" 
+          "Text: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب  رضى الله عنه  على المنبر قال سمعت رسول الله صلى الله عليه وسلم يقول إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى، فمن كانت هجرته إلى دنيا يصيبها أو إلى امرأة ينكحها فهجرته إلى ما هاجر إليه"
+          "### Expected Output:"
+          "source: Sahih Bukhari"
+          "chapter_no: 1"
+          "hadith_no: 1"
+          "sanad: [\"عبد الله بن الزبير\", \"سفيان بن عيينة\", \"يحيى بن سعيد الأنصاري\", \"محمد بن إبراهيم بن الحارث\", \"علقمة بن وقاص\", \"عمر بن الخطاب\"]"
+          "sanad_sentence: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب"
+          "sanad_english: [\"Umar ibn Al-Khattab\", \"Alqammah ibn Waqqas\", \"Muhammad ibn Ibrahim ibn Harith\", \"Yahya ibn Saeed Al-Ansari\", \"Sufyan ibn Aina\", \"Andullah ibn Zubayr\"]"
+          "sanad_sentence_english: \"Al-Humaydi ‘Abdullah ibn al-Zubayr narrated to us, he said: Sufyan narrated to us, he said: Yahya ibn Sa‘id al-Ansari narrated to us, he said: Muhammad ibn Ibrahim al-Taymi informed me, that he heard ‘Alqamah ibn Waqqas al-Laythi say: I heard ‘Umar ibn al-Khattab\""
+          "END OF EXAMPLE 1"
           "Extract the data from the ahadith into the given structure."
       )
     else:
@@ -211,8 +209,8 @@ def extract_sanad_batch(hadith_entries: list[dict], with_english: bool = False) 
     # print(user_prompt)
     # print("\n\n")
     try:
-            parsed_response = _call_openai_with_retry(system_prompt, user_prompt, with_english)
-            return parsed_response.hadiths
+      parsed_response = _call_openai_with_retry(system_prompt, user_prompt, with_english)
+      return parsed_response.hadiths
     except OpenAIError as e:
-        print("❌ OpenAI API failed after retries:", e)
-        raise e
+      print("❌ OpenAI API failed after retries:", e)
+      raise e

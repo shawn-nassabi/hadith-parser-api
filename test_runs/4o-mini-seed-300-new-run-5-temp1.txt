@@ -1,0 +1,64 @@
+
+=== Comparison Results ===
+
+🔹 Hadith: ('Sahih Bukhari', 64, 4138)
+Extracted sanad: ['مسلم', 'هشام', 'قتادة', 'أنس']
+Ground truth:    ['Muslim bin Ibrahim al-Azdy مسلم بن إبراهيم الأزدي الفراهيدي', "Hisham bin Abi 'Abdullah al-Dastawa'i هشام بن أبي عبد الله الدستوائي", 'Qatada قتادة', 'Anas bin Malik ( أنس بن مالك بن النضر ( رضي الله عنه']
+✅ Matched 4/4 narrators
+
+🔹 Hadith: ('Sahih Muslim', 40, 5876)
+Extracted sanad: ['عثمان بن أبي شيبة', 'جرير', 'إسحاق بن منصور', 'عبد الرحمن', 'سفيان', 'الأعمش']
+Ground truth:    ['Uthman bin Muhammad (Abi Shayba) عثمان بن محمد بن إبراهيم / بن أبي شيبة', "Jarir bin 'Abdul Hameed al-Razi جرير بن عبد الحميد أبو عبد الله الضبي", 'Ishaq bin Mansur al-Kausaj إسحاق بن منصور بن بهرام - الكوسج', 'Abdur Rahman bin Mahdi عبد الرحمن بن مهدي']
+✅ Matched 4/6 narrators
+❌ Unmatched extracted names: ['سفيان', 'الأعمش']
+
+🔹 Hadith: ('Sahih Bukhari', 91, 7058)
+Extracted sanad: ['عبيد بن إسماعيل', 'أبو أسامة', 'هشام', 'أبيه', 'عائشة']
+Ground truth:    ["Ubaid bin Isma'il al-Quraishi عبيد بن إسماعيل القرشي الهباري", 'Hammad bin Usamah حماد بن أسامة - أبو أسامة', "Hisham bin 'Urwa هشام بن عروة", 'Urwa ibn al-Zubayr عروة بن الزبير', 'Aisha bint Abi Bakr ( أمّ المؤمنين عائشة بنت أبي بكر الصديق ( رضي الله عنها']
+✅ Matched 4/5 narrators
+❌ Unmatched extracted names: ['أبيه']
+
+🔹 Hadith: ('Sahih Bukhari', 27, 1838)
+Extracted sanad: ['محمد', 'يحيى بن صالح', 'معاوية بن سلام', 'يحيى بن أبي كثير', 'عكرمة', 'ابن عباس']
+Ground truth:    ["Muhammad bin 'Ubaid al-Tanafasi محمد بن عبيد بن أبي أمية الطنافسي", 'Yahya bin Salah al-Wahadi يحيى بن صالح الوحاظي أبو زكريا', '', 'Yahya bin Abi Kathir يحيى بن أبي كثير الطائي', 'Ikrama عكرمة', 'ibn Abbas ( عبد الله بن العباس بن عبد المطلب  الحبر ( رضي الله عنه']
+✅ Matched 5/6 narrators
+❌ Unmatched extracted names: ['معاوية بن سلام']
+
+🔹 Hadith: ('Sahih Bukhari', 94, 7254)
+Extracted sanad: ['يحيى', 'عبد الرزاق', 'ابن جريج', 'ابن شهاب', 'سهل']
+Ground truth:    ["Yahya bin Ma'in يحيى بن معين", 'Abdur-Razzaq عبد الرزاق بن همام', 'Ibn Jurayj ابن جريج', 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم']
+✅ Matched 4/5 narrators
+❌ Unmatched extracted names: ['سهل']
+
+🔹 Hadith: ('Sahih Muslim', 54, 7350)
+Extracted sanad: ['محمد بن المثنى', 'محمد بن بشار', 'روح', 'سعيد']
+Ground truth:    ['Muhammad bin Bashar Bindar محمد بن بشار بندار', "Ruh bin 'Ubada bin al-'Ala' روح بن عبادة بن العلاء"]
+✅ Matched 2/4 narrators
+❌ Unmatched extracted names: ['محمد بن المثنى', 'سعيد']
+
+🔹 Hadith: ("Sunan Abi Da'ud", 36, 4234)
+Extracted sanad: ['مؤمل بن هشام', 'إسماعيل', 'أبو الأشهب', 'عبد الرحمن بن طرفة بن عرفجة بن أسعد', 'أبوه', 'عرفجة']
+Ground truth:    ['', '']
+✅ Matched 0/6 narrators
+❌ Unmatched extracted names: ['مؤمل بن هشام', 'إسماعيل', 'أبو الأشهب', 'عبد الرحمن بن طرفة بن عرفجة بن أسعد', 'أبوه', 'عرفجة']
+
+🔹 Hadith: ('Sahih Bukhari', 62, 3695)
+Extracted sanad: ['عبد الله بن رجاء', 'إسرائيل', 'أبو إسحاق', 'البراء']
+Ground truth:    ["Abdullah bin Raja' bin 'Umar عبد الله بن رجاء بن عمر/المثني الغداني", "Isra'il bin Yonus bin Abi Ishaq إسرائيل بن يونس بن أبي إسحاق", "Abu Ishaq al-Sabay'ai' أبو إسحاق السبيعي عمرو بن عبد الله", "al-Bara' bin Azib bin al-Harith ( البراء بن عازب بن الحارث ( رضي الله عنه"]
+✅ Matched 4/4 narrators
+
+🔹 Hadith: ('Sahih Bukhari', 63, 3855)
+Extracted sanad: ['أبو الوليد', 'شعبة', 'عمرو بن مرة', 'إبراهيم', 'مسروق']
+Ground truth:    ["Hisham bin 'Abdul Malik al-Tayalasi هشام بن عبد الملك  أبو الوليد الطيالسي", "Shu'bah bin al-Hajjaj شعبة بن الحجاج", "Amr bin Murrah bin 'Abdullah عمرو بن مرة بن عبد الله بن طارق", "Ibrahim al-Nakha'i إبراهيم النخعي", "Masrouq bin al-Ajda' مسروق بن الأجدع", "ibn Mas'ud ( عبد الله بن مسعود ( رضي الله عنه"]
+✅ Matched 5/5 narrators
+
+🔹 Hadith: ('Sunan Ibn Majah', 0, 173)
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'عبد الله بن عامر بن زرارة', 'أبو بكر بن عياش', 'عاصم', 'زر', 'عبد الله بن مسعود']
+Ground truth:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', "Abdullah bin 'Amir عبد الله بن عامر بن زرارة الحضرمي", "Abu Bakr bin 'Ayyash al-Asadi أبو بكر بن عياش بن سالم الأسدي", 'Asim al-Ahwal عاصم الأحول', 'Zar bin Habaysh bin Habasha زر بن حبيش بن حباشة', "ibn Mas'ud ( عبد الله بن مسعود ( رضي الله عنه"]
+✅ Matched 6/6 narrators
+
+=== Evaluation Metrics ===
+🔸 Precision:         0.75
+🔸 Recall:            0.90
+🔸 F1 Score:          0.82
+🔸 Exact Match Rate:  0.30 (3/10)
