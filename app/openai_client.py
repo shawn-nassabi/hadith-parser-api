@@ -14,8 +14,16 @@ LLM_MODEL="gpt-4o-mini-2024-07-18"
 
 load_dotenv()
 API_KEY = os.getenv("OPENAI_API_KEY")
+print("17")
+file_path = '.env'
+file_content = ""
+with open(file_path, 'r') as file:
+  file_content = file.read()
+print(file_content)
 
 client = OpenAI(api_key=API_KEY)
+print("25")
+
 
 # To extract sanad and matn in both english and arabic
 class Hadith(BaseModel):

@@ -1,13 +1,31 @@
 import csv
 import argparse
 import os
-import pandas as pd
 import io
 import requests
+import dotenv
+import math
+import sys
+import pandas as pd
 from openai import OpenAI
 
+def calculate_sample_size(population_size, confidence_level=1.96, margin_of_error=0.05):
+    p = 0.5  # estimated proportion
+    n = (confidence_level**2 * p * (1 - p)) / (margin_of_error**2)
+    n = n / (1 + (n - 1) / population_size)
+    return math.ceil(n)
+
+# Example usage
+population_size = 34441
+sample_size = calculate_sample_size(population_size)
+print(f"Sample size needed: {sample_size}")
+
+
+
+dotenv.load_dotenv()  # this loads the .env file into os.environ
+
 # HOW TO RUN
-# python3 test.py --seed 120 --result-number 1 --output 4o-mini-seed-120-run-1.txt
+# python(3) test.py --seed 120 --sample_size 1 --output 4o-mini-seed-120-run-1.txt
 
 # In the LLM test, if the name of the Prophet is mentioned as a mismatch then drop it (mark it as a match)
 
@@ -26,27 +44,30 @@ parser.add_argument(
     help="Random seed for sampling hadiths"
 )
 parser.add_argument(
-    "--result-number",
+    "--sample_size",
     type=int,
-    default=None,
+    default=sample_size,
     help="Optional result number"
 )
 args = parser.parse_args()
 filename = args.output
 if not filename.startswith("test_runs/"):
     filename = os.path.join("test_runs", filename)
-output_file = filename
+output_file_1 = filename
 
-openai_api_key = os.getenv("OPENAI_API_KEY") 
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if openai_api_key == None:
+	print("openai_api_key == None")
 
 openai_client = OpenAI(api_key=openai_api_key)
 from random import randrange
 
 rand_seed = args.seed if args.seed is not None else randrange(100)
-result_number = args.result_number
+sample_size = args.sample_size
 print("Random seed =", rand_seed)
-if result_number is not None:
-    print("Result number =", result_number)
+if sample_size is not None:
+    print("Sample size =", sample_size)
+
 
 # Define the file paths for your two CSV files
 hadith_path = "datasets/kaggle/kaggle_hadiths_clean.csv"
@@ -108,14 +129,15 @@ except FileNotFoundError:
 except Exception as e:
 	print(f"An error occurred while reading {rawis_path}: {e}")
 
-sample_size = 10
-first_10_elements = hadith_df[['chain_indx', 'text_ar', 'source', 'chapter_no', 'hadith_no']].sample(n=sample_size,random_state=rand_seed)
+sample_data = hadith_df[['chain_indx', 'text_ar', 'source', 'chapter_no', 'hadith_no']].sample(n=sample_size,random_state=rand_seed)
+print("total  size = ", len(hadith_df))
+print("sample size = ", sample_size)
 
 
 
 # Prepare the sample dataframe as a CSV in memory
 csv_buffer = io.StringIO()
-first_10_elements.to_csv(csv_buffer, index=False)
+sample_data.to_csv(csv_buffer, index=False)
 csv_buffer.seek(0)
 
 # Send the CSV as a file to the FastAPI endpoint
@@ -139,7 +161,7 @@ else:
 # lookup for (source, chapter_no, hadith_no) → chain_indx
 chain_lookup = {
 	(row['source'].strip(), row['chapter_no'], int(row['hadith_no'].strip())): row['chain_indx']
-	for _, row in first_10_elements.iterrows()
+	for _, row in sample_data.iterrows()
 }
 
 print(chain_lookup)
@@ -166,9 +188,20 @@ total_ground_truth = 0
 total_matched = 0
 exact_match_count = 0
 
-with open(output_file, "w", encoding="utf-8") as f:
+
+folder_path = 'structured_results'
+file_count = sum(1 for item in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, item)))
+print('Number of files:', file_count)
+filename = str(file_count+1)+ "_" + str(sample_size) + "_" + str(rand_seed) + ".txt"
+print(filename)
+
+if not filename.startswith("structured_results/"):
+	output_file_2 = os.path.join("structured_results", filename)
+
+with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", encoding="utf-8") as f2:
 	print("\n=== Comparison Results ===")
-	f.write("\n=== Comparison Results ===\n")
+	f1.write("\n=== Comparison Results ===\n")
+	f2.write("\n=== Comparison Results ===\n")
 	
 	for api_result in results:
 		key = (api_result['source'], api_result['chapter_no'], api_result['hadith_no'])
@@ -177,7 +210,8 @@ with open(output_file, "w", encoding="utf-8") as f:
 		if not chain_str:
 			msg = f"❌ Chain not found for: {key}"
 			print(msg)
-			f.write(msg + "\n")
+			f1.write(msg + "\n")
+			f2.write(msg + "\n")
 			continue
 
 		narrator_ids = [int(i) for i in chain_str.split(',')]
@@ -239,7 +273,8 @@ with open(output_file, "w", encoding="utf-8") as f:
 			output += f"❌ Unmatched extracted names: {unmatched_names}\n"
 
 		print(output)
-		f.write(output)
+		f1.write(output)
+		f2.write(output)
 
 	# Final metrics
 	precision = total_matched / total_extracted if total_extracted else 0
@@ -255,4 +290,14 @@ with open(output_file, "w", encoding="utf-8") as f:
 		f"🔸 Exact Match Rate:  {exact_match_rate:.2f} ({exact_match_count}/{len(results)})\n"
 	)
 	print(summary)
-	f.write(summary)
+
+	f1.write(summary)
+	f2.write(summary)
+
+
+
+
+
+
+
+
