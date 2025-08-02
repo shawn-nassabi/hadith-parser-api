@@ -50,7 +50,7 @@ class AllHadithArabic(BaseModel):
 class HadithSanadWithEnglish(BaseModel):
   source: str
   chapter_no: int
-  hadith_no: int
+  hadith_no: str
   sanad: list[str]
   sanad_sentence: str
   sanad_english: list[str]
@@ -63,7 +63,7 @@ class AllHadithSanadWithEnglish(BaseModel):
 class HadithSanad(BaseModel):
   source: str
   chapter_no: int
-  hadith_no: int
+  hadith_no: str
   sanad: list[str]
   sanad_sentence: str
 

@@ -160,7 +160,7 @@ else:
 
 # lookup for (source, chapter_no, hadith_no) → chain_indx
 chain_lookup = {
-	(row['source'].strip(), row['chapter_no'], int(row['hadith_no'].strip())): row['chain_indx']
+	(row['source'].strip(), row['chapter_no'], row['hadith_no'].strip()): row['chain_indx']
 	for _, row in sample_data.iterrows()
 }
 
