@@ -10,19 +10,21 @@ import json
 # gpt-4o-mini-2024-07-18
 # gpt-4.1-2025-04-14
 # gpt-4.1-nano-2025-04-14
-LLM_MODEL="gpt-4o-mini-2024-07-18"
+# gpt-4.1-2025-04-14
+# gpt-5-nano-2025-08-07
+LLM_MODEL="gpt-4o-2024-08-06"
 
 load_dotenv()
 API_KEY = os.getenv("OPENAI_API_KEY")
-print("17")
+# print("17")
 file_path = '.env'
 file_content = ""
 with open(file_path, 'r') as file:
   file_content = file.read()
-print(file_content)
+# print(file_content)
 
 client = OpenAI(api_key=API_KEY)
-print("25")
+#print("25")
 
 
 # To extract sanad and matn in both english and arabic
@@ -133,7 +135,7 @@ def _call_openai_with_retry(system_prompt: str, user_prompt: str, with_english: 
         {"role": "user", "content": user_prompt},
       ],
       text_format=fmt,
-      temperature=1
+      temperature=0.7
     )
 
     return response.output_parsed
@@ -185,7 +187,29 @@ def extract_sanad_batch(hadith_entries: list[dict], with_english: bool = False) 
           "- hadith_no: the hadith number\n"
           "- sanad: list of narrators (Arabic) in order.\n"
           "- sanad_sentence: the exact sentence containing the sanad. For example: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب  رضى الل\n"
-          "Here are a few examples of input and expected valid output:" 
+          """
+          I want you to be mindful of who the narrators are in the Sanad and who other mentioned persons are in the hadith. We want to only extract the narrators in the Sanad, not the other speakers in the hadith. Here are a few examples to explain what I mean (these examples showcase the nuance you need to lookout for.):\n
+
+          EXAMPLE 1:\n
+          Hadith: حدثنا محمد بن عبيد الله، حدثنا أسامة بن حفص المدني، عن هشام بن عروة، عن أبيه، عن عائشة  رضى الله عنها  أن قوما، قالوا للنبي صلى الله عليه وسلم إن قوما يأتونا باللحم لا ندري أذكر اسم الله عليه أم لا فقال ‏"‏ سموا عليه أنتم وكلوه ‏"‏‏.‏ قالت وكانوا حديثي عهد بالكفر‏.‏ تابعه علي عن الدراوردي‏.‏ وتابعه أبو خالد والطفاوي‏.‏
+          The narrators in the sanad for this hadith are:\n
+          ["Muhammad bin 'Ubaid al-Tanafasi محمد بن عبيد بن أبي أمية الطنافسي", 'Usamah bin Hafs al-Madni أسامة بن حفص المدني', "Hisham bin 'Urwa هشام بن عروة", 'Urwa ibn al-Zubayr عروة بن الزبير', 'Aisha bint Abi Bakr ( أمّ المؤمنين عائشة بنت أبي بكر الصديق ( رضي الله عنه
+
+          Notice that Aisha was also included in the sanad because she is one of the people in the chain of narrators, she isn’t involved with the hadith itself.\n
+
+          EXAMPLE 2:\n
+
+          Hadith: أخبرنا محمد بن منصور، قال حدثنا سفيان، عن مسعر، عن المقدام بن شريح، عن أبيه، قال سمعت عائشة، تقول كان رسول الله صلى الله عليه وسلم يناولني الإناء فأشرب منه وأنا حائض ثم أعطيه فيتحرى موضع فمي فيضعه على فيه ‏.‏
+
+          The narrators in the sanad for this hadith are:\n["Muhammad bin Mansur bin Da'ud محمد بن منصور بن داود الطوسي", "Sufyan bin 'Uyaynah سفيان بن عيينة", "Mas'ar bin Kadam مسعر بن كدام", "al-Mqdam bin Shryh bin Han'i المقدام بن شريح بن هانئ بن يزيد", "Sharih bin Hani' al-Harithi شريح بن هانئ"]
+
+          In this case notice that Aisha is not a part of the sanad since the narrator of the hadith says that he ‘heard Aisha say…’ something, not that she was one of the people in the actual sanad. She is, in that sense, one of the people mentioned in the hadith itself, she is not among the narrators in the sanad for this example. Please keep in mind the nuance from example 1 to example 2.\n
+          Another point I wanted to mention is that sometimes in some of the ahadith, the name of the narrator isn’t explicitly mentioned but rather a relative term is used, for example ‘أبيه' , in those cases please try to use your knowledge to determine the actual name of the person being referenced and mention that name in the extracted sanad. Don't extract أبيه but instead figure out what the name of the
+          person actually is (using your knowledge) and put that in the extracted names.
+
+          Thank you!
+          """   
+          "Here are a few examples of input and expected valid output:\n" 
           "START OF EXAMPLE 1:" 
           "### Input:" 
           "Source: Sahih Bukhari" 
@@ -198,8 +222,9 @@ def extract_sanad_batch(hadith_entries: list[dict], with_english: bool = False) 
           "hadith_no: 1"
           "sanad: [\"عبد الله بن الزبير\", \"سفيان بن عيينة\", \"يحيى بن سعيد الأنصاري\", \"محمد بن إبراهيم بن الحارث\", \"علقمة بن وقاص\", \"عمر بن الخطاب\"]"
           "sanad_sentence: حدثنا الحميدي عبد الله بن الزبير، قال حدثنا سفيان، قال حدثنا يحيى بن سعيد الأنصاري، قال أخبرني محمد بن إبراهيم التيمي، أنه سمع علقمة بن وقاص الليثي، يقول سمعت عمر بن الخطاب"
-          "END OF EXAMPLE 1"
-          "Extract the data from the ahadith into the given structure."
+          "END OF EXAMPLE 1\n"
+          ""
+          "Extract the data from the ahadith into the given structure.\n"
         )
 
     # Build a single prompt by joining each entry’s metadata + text.

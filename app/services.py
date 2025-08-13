@@ -38,7 +38,7 @@ async def process_csv_upload(file: UploadFile, include_english: bool = False):
         for _, row in df.iterrows()
     ]
 
-    batch_size = 3
+    batch_size = 1
     all_results: list[dict] = []
 
     for i in range(0, len(entries), batch_size):

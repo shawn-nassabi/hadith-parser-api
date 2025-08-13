@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "seed": 100,
+    "sample_size": 10,
+    "timestamp": "2025-08-10T21:16:32.590038Z",
+    "api_model": "gpt-4o-mini-2024-07-18"
+  },
+  "truth": [
+    {
+      "source": "Sahih Bukhari",
+      "chapter_no": 72,
+      "hadith_no": 5565,
+      "chain_indx": "30213, 20153, 11065, 10511, 53"
+    },
+    {
+      "source": "Jami' al-Tirmidhi",
+      "chapter_no": 41,
+      "hadith_no": 2661,
+      "chain_indx": "30367, 20023, 11013, 19"
+    },
+    {
+      "source": "Sunan an-Nasa'i",
+      "chapter_no": 3,
+      "hadith_no": 379,
+      "chain_indx": "36658, 20005, 20359, 10830, 10774"
+    },
+    {
+      "source": "Sahih Muslim",
+      "chapter_no": 16,
+      "hadith_no": 3375,
+      "chain_indx": "30399, 30367, 20031, 30367, 20676, 11263, 34"
+    },
+    {
+      "source": "Jami' al-Tirmidhi",
+      "chapter_no": 15,
+      "hadith_no": 1365,
+      "chain_indx": "20021, 11019, 11016, 394"
+    },
+    {
+      "source": "Sahih Bukhari",
+      "chapter_no": 97,
+      "hadith_no": 7379,
+      "chain_indx": "20193, 20022, 11269, 19"
+    },
+    {
+      "source": "Sunan an-Nasa'i",
+      "chapter_no": 15,
+      "hadith_no": 1457,
+      "chain_indx": "20348"
+    },
+    {
+      "source": "Sunan an-Nasa'i",
+      "chapter_no": 22,
+      "hadith_no": 2380,
+      "chain_indx": "38434, 20462, 20024, 11019, 11305, 5130"
+    },
+    {
+      "source": "Sunan Abi Da'ud",
+      "chapter_no": 4,
+      "hadith_no": 1199,
+      "chain_indx": "30007, 30175, 20031, 11070, 38204, 20121, 11070, 10647"
+    },
+    {
+      "source": "Sahih Muslim",
+      "chapter_no": 2,
+      "hadith_no": 408,
+      "chain_indx": "30367, 20023, 11168, 11205, 13"
+    }
+  ],
+  "results": []
+}
