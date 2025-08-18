@@ -1,0 +1,62 @@
+test_runs/hadith_api_comparison_output.txt
+
+
+=== Comparison Results ===
+
+🔹 Hadith: ("Sunan Abi Da'ud", 2, 548)
+Extracted sanad: ['عثمان بن أبي شيبة', 'أبو معاوية', 'الأعمش', 'أبو صالح', 'أبو هريرة']
+Ground truth:    ['Uthman bin Muhammad (Abi Shayba) عثمان بن محمد بن إبراهيم / بن أبي شيبة', 'Muhammad bin Khazim al-Darir محمد بن خازم  أبو معاوية الضرير', "Sulaiman al-A'mash الأعمش / سليمان بن مهران", 'Dhakwan Abu Salah al-Saman al-Ziyat ذكوان أبو صالح السمان الزيات', 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 5/5 narrators
+
+🔹 Hadith: ('Sunan Ibn Majah', 19, 2617)
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'علي بن محمد', 'وكيع', 'هشام بن عروة', 'عروة بن الزبير', 'عائشة بنت أبي بكر']
+Ground truth:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', 'Ali bin Muhammad bin Ishaq al-Tanafasi علي بن محمد بن إسحاق الطنافسي', "Waki' bin al-Jarrah وكيع بن الجراح", "Hisham bin 'Urwa هشام بن عروة", 'Urwa ibn al-Zubayr عروة بن الزبير']
+✅ Matched 5/6 narrators
+❌ Unmatched extracted names: ['عائشة بنت أبي بكر']
+
+🔹 Hadith: ("Sunan Abi Da'ud", 1, 267)
+Extracted sanad: ['يزيد بن خالد بن عبد الله بن موهب الرملي', 'الليث بن سعد', 'ابن شهاب الزهري', 'حبيب بن أبي ثابت', 'ندبة', 'ميمونة']
+Ground truth:    ['Yazid bin Khalid bin Yazid يزيد بن خالد بن يزيد', "al-Laith bin Sa'd الليث بن سعد", 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', "Habib Mwla 'Urwa bin al-Zubair حبيب مولى عروة", 'Nadba client of Maymuna ( ندبة مولاة ميمونة ( رضي الله عنها', 'Maymuna bint al-Harith ( ميمونة بنت الحارث بن حزن الهلالية ( رضي الله عنها']
+✅ Matched 6/6 narrators
+
+🔹 Hadith: ('Sahih Bukhari', 64, 4174)
+Extracted sanad: ['إبراهيم بن طهمان', 'الشيباني', 'عدي بن ثابت', 'البراء بن عازب']
+Ground truth:    ['Sulaiman bin Abi Sulaiman سليمان بن أبي سليمان', 'Ady bin Thabit al-Ansari عدي بن ثابت الأنصاري الكوفي', "al-Bara' bin Azib bin al-Harith ( البراء بن عازب بن الحارث ( رضي الله عنه"]
+✅ Matched 2/4 narrators
+❌ Unmatched extracted names: ['إبراهيم بن طهمان', 'الشيباني']
+
+🔹 Hadith: ("Sunan Abi Da'ud", 2, 897)
+Extracted sanad: ['مسلم بن إبراهيم', 'شعبة بن الحجاج', 'قتادة بن دعامة', 'أنس بن مالك']
+Ground truth:    ['Muslim bin Ibrahim al-Azdy مسلم بن إبراهيم الأزدي الفراهيدي', "Shu'bah bin al-Hajjaj شعبة بن الحجاج", 'Qatada قتادة', 'Anas bin Malik ( أنس بن مالك بن النضر ( رضي الله عنه']
+✅ Matched 4/4 narrators
+
+🔹 Hadith: ("Sunan an-Nasa'i", 12, 1088)
+Extracted sanad: ['محمد بن عبيد الكوفي المحاربي', 'ابن المبارك', 'معمر', 'الزهري', 'سالم', 'ابن عمر']
+Ground truth:    ["Muhammad bin 'Ubaid al-Tanafasi محمد بن عبيد بن أبي أمية الطنافسي", 'Abdullah bin Mubarak عبد الله بن المبارك', "Ma'mar bin Rashid معمر بن راشد", 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', "Salim bin 'Abdullah bin 'Umar سالم بن عبد الله بن عمر بن الخطاب", 'ibn Umar ( عبد الله بن عمر بن الخطاب ( رضي الله عنه']
+✅ Matched 5/6 narrators
+❌ Unmatched extracted names: ['محمد بن عبيد الكوفي المحاربي']
+
+🔹 Hadith: ('Sunan Ibn Majah', 5, 1164)
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'شبابة بن سوار', 'ابن أبي ذئب', 'الزهري', 'سعيد بن المسيب', 'أبو هريرة']
+Ground truth:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', 'Shababa bin Sawar شبابة بن سوار الفزاري', "Muhammad bin 'Abdur Rahman b. Abi Dh'ab محمد بن عبد الرحمن بن أبي ذئب", 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', "Sa'id ibn al-Musayyib سعيد بن المسيب بن حزن أبو محمد القرشي", 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 6/6 narrators
+
+🔹 Hadith: ('Sahih Bukhari', 33, 2029)
+Extracted sanad: ['قتيبة', 'ليث', 'ابن شهاب', 'عروة', 'عمرة بنت عبد الرحمن', 'عائشة بنت أبي بكر']
+Ground truth:    ["Qutayba bin Sa'id bin Jamil قتيبة بن سعيد بن جميل", "al-Laith bin Sa'd الليث بن سعد", 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', 'Urwa ibn al-Zubayr عروة بن الزبير', "Umarh bint 'Abdur Rahman عمرة بنت عبد الرحمن بن سعد بن زرارة", 'Aisha bint Abi Bakr ( أمّ المؤمنين عائشة بنت أبي بكر الصديق ( رضي الله عنها']
+✅ Matched 6/6 narrators
+
+🔹 Hadith: ("Sunan an-Nasa'i", 37, 4049)
+Extracted sanad: ['محمود بن غيلان', 'أبو داود', 'شعبة', 'منصور', 'الشعبي', 'جرير']
+Ground truth:    ['Mahmud bin Ghaylan محمود بن غيلان العدوي مولاهم أبو أحمد', "Sulaiman bin Da'ud bin al-Jarud سليمان بن داود أبو داود الطيالسي", "Shu'bah bin al-Hajjaj شعبة بن الحجاج", "Mansur bin al-Ma'tamar al-Salmi منصور بن المعتمر بن عبد الله السلمي", "Amir al-Sha'bi عامر الشعبي", "Jarir bin 'Abdullah al-Bajli ( جرير بن عبد الله البجلي ( رضي الله عنه"]
+✅ Matched 6/6 narrators
+
+🔹 Hadith: ("Sunan Abi Da'ud", 6, 1400)
+Extracted sanad: ['عمرو بن مرزوق', 'شعبة', 'قتادة', 'عباس الجشمي', 'أبو هريرة']
+Ground truth:    ['Amr bin Marzuq al-Bahli عمرو بن مرزوق الباهلي', "Shu'bah bin al-Hajjaj شعبة بن الحجاج", 'Qatada قتادة', 'Abbas al-Jshmy عباس الجشمي', 'Abu Hurairah ( أبو هريرة - عبد الرحمن بن صخر الدوسي  ( رضي الله عنه']
+✅ Matched 5/5 narrators
+
+=== Evaluation Metrics ===
+🔸 narrator-level accuracy:                        0.93 (50/54)
+🔸 unique-narratorname narraror-level accuracy:    0.96 (50/52)
+🔸 sanad-level accuracy:                           0.10 (1/10)

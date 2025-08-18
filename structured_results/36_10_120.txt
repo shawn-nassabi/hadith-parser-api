@@ -68,5 +68,5 @@ Validation dataset:    ['Amr bin Marzuq al-Bahli عمرو بن مرزوق الب
 
 === Evaluation Metrics ===
 🔸 narrator-level accuracy:                        0.93 (50/54)
-🔸 unique-narratorname narraror-level accuracy:    0.92 (45/49)
+🔸 unique-narratorname narraror-level accuracy:    0.92 (50/52)
 🔸 sanad-level accuracy:                           0.10 (1/10)

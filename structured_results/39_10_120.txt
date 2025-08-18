@@ -11,10 +11,10 @@ Validation dataset:    ['Uthman bin Muhammad (Abi Shayba) عثمان بن محم
 
 🔹sequence_num: 2/10
 Hadith: ('Sunan Ibn Majah', 19, 2617)
-Extracted sanad: ['أبو بكر بن أبي شيبة', 'علي بن محمد', 'وكيع', 'هشام بن عروة', 'عروة بن الزبير', 'عائشة بنت أبي بكر']
+Extracted sanad: ['أبو بكر بن أبي شيبة', 'علي بن محمد', 'وكيع', 'هشام بن عروة', 'عروة بن زبير', 'عائشة']
 Validation dataset:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شيبة', 'Ali bin Muhammad bin Ishaq al-Tanafasi علي بن محمد بن إسحاق الطنافسي', "Waki' bin al-Jarrah وكيع بن الجراح", "Hisham bin 'Urwa هشام بن عروة", 'Urwa ibn al-Zubayr عروة بن الزبير']
 ✅ Matched 5/6 narrators
-❌ Unmatched extracted names: ['عائشة بنت أبي بكر']
+❌ Unmatched extracted names: ['عائشة']
 
 🔹sequence_num: 3/10
 Hadith: ("Sunan Abi Da'ud", 1, 267)
@@ -50,7 +50,7 @@ Validation dataset:    ['Abu Bakr bin Abi Shayba أبو بكر بن أبي شي�
 
 🔹sequence_num: 8/10
 Hadith: ('Sahih Bukhari', 33, 2029)
-Extracted sanad: ['قتيبة', 'ليث', 'ابن شهاب', 'عروة', 'عمرة بنت عبد الرحمن', 'عائشة']
+Extracted sanad: ['قتيبة', 'ليث بن سعد', 'ابن شهاب الزهري', 'عروة بن الزبير', 'عمرة بنت عبد الرحمن', 'عائشة بنت أبي بكر']
 Validation dataset:    ["Qutayba bin Sa'id bin Jamil قتيبة بن سعيد بن جميل", "al-Laith bin Sa'd الليث بن سعد", 'al-Zuhri ابن شهاب الزهري\u200e, محمد بن مسلم', 'Urwa ibn al-Zubayr عروة بن الزبير', "Umarh bint 'Abdur Rahman عمرة بنت عبد الرحمن بن سعد بن زرارة", 'Aisha bint Abi Bakr ( أمّ المؤمنين عائشة بنت أبي بكر الصديق ( رضي الله عنها']
 ✅ Matched 6/6 narrators
 
@@ -68,5 +68,5 @@ Validation dataset:    ['Amr bin Marzuq al-Bahli عمرو بن مرزوق الب
 
 === Evaluation Metrics ===
 🔸 narrator-level accuracy:                        0.93 (50/54)
-🔸 unique-narratorname narraror-level accuracy:    0.92 (45/49)
+🔸 unique-narratorname narraror-level accuracy:    0.92 (44/48)
 🔸 sanad-level accuracy:                           0.10 (1/10)
