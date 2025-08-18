@@ -12,7 +12,7 @@ import json
 # gpt-4.1-nano-2025-04-14
 # gpt-4.1-2025-04-14
 # gpt-5-nano-2025-08-07
-LLM_MODEL="gpt-4o-2024-08-06"
+LLM_MODEL="gpt-4o-mini-2024-07-18"
 
 load_dotenv()
 API_KEY = os.getenv("OPENAI_API_KEY")

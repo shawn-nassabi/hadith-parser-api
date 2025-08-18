@@ -1,3 +1,8 @@
+=== Evaluation Metrics ===
+🔸 Precision:         0.86
+🔸 Recall:            0.96
+🔸 F1 Score:          0.91
+🔸 Exact Match Rate:  0.44 (157/360)
 
 === Comparison Results ===
 
@@ -1980,8 +1985,4 @@ Extracted sanad: ['قتيبة بن سعيد', 'أبو الأحوص سلام بن
 Ground truth:    ["Qutayba bin Sa'id bin Jamil قتيبة بن سعيد بن جميل", 'Abu al-Ahwus, Salam bin Sulaym al-Hanafi أبو الأحوص سلام بن سليم الحنفي', 'Smak bin Hrb bin Aws سماك بن حرب بن أوس', 'Ikrama عكرمة', 'ibn Abbas ( عبد الله بن العباس بن عبد المطلب  الحبر ( رضي الله عنه']
 ✅ Matched 5/5 narrators
 
-=== Evaluation Metrics ===
-🔸 Precision:         0.86
-🔸 Recall:            0.96
-🔸 F1 Score:          0.91
-🔸 Exact Match Rate:  0.44 (157/360)
+

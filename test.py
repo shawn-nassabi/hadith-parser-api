@@ -394,6 +394,10 @@ eval_start = time.perf_counter()
 with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", encoding="utf-8") as f2:
     header = "\n=== Comparison Results ===\n"
     print(header)
+    f1.write(args.output)
+    f1.write("\n\n")
+    f2.write(args.output)
+    f2.write("\n\n")
     f1.write(header)
     f2.write(header)
 
