@@ -376,7 +376,7 @@ def get_rawi_name(scholar_id: int) -> str:
 
 # ============================= Evaluation =============================
 
-total_predicted_narrator_count = 0
+len_predict_narr_name_ex = 0
 total_val_ds_narrator_count = 0
 unique_narrname_count = 0
 total_matched = 0
@@ -441,7 +441,7 @@ with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", 
 		if not isinstance(extracted_sanad, list):
 			extracted_sanad = [safe_str(extracted_sanad)] if not is_missing(extracted_sanad) else []
 
-		matches = 0
+		match_counter = 0
 		unmatched_names = []
 		prophet_names = []
 		prophet_indices = set()  # which extracted indices should be ignored for metrics
@@ -460,14 +460,14 @@ with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", 
 				true_tokens = safe_tokenize(full_name)
 				# Treat the extracted snippet as a subset of tokens of the true name
 				if ex_tokens and all(tok in true_tokens for tok in ex_tokens):
-					matches += 1
+					match_counter += 1
 					found = True
 					break
 
 			if not found:
 				llm_check_result = llm_name_match(name, val_ds_narr_names)
 				if llm_check_result == "YES":
-					matches += 1
+					match_counter += 1
 					found = True
 				elif llm_check_result == "PROPHET":
 					# Prophet: don't count as mismatch; exclude from denominator
@@ -477,26 +477,27 @@ with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", 
 
 			if not found:
 				unmatched_names.append(name)
+		total_matches_current_hadith = match_counter
 
 		# For metrics, remove prophet names from denominator
-		final_extracted = [n for i, n in enumerate(extracted_sanad) if i not in prophet_indices]
+		predicted_narr_names_excluding_prophet = [n for i, n in enumerate(extracted_sanad) if i not in prophet_indices]
 
 		# Metrics accumulation
-		total_predicted_narrator_count += len(final_extracted)
-		unique_val_ds_narr_names = list({safe_str(n).strip() for n in val_ds_narr_names if safe_str(n).strip()})
-		unique_narrname_count += len(unique_val_ds_narr_names)
-		total_matched += matches
+		len_predict_narr_name_ex += len(predicted_narr_names_excluding_prophet)
+		current_hadith_narrators_list = list({safe_str(n).strip() for n in val_ds_narr_names if safe_str(n).strip()})
+		unique_narrname_count += len(current_hadith_narrators_list)
+		total_matched += match_counter
 
-		if matches == len(unique_val_ds_narr_names) and len(final_extracted) == len(unique_val_ds_narr_names):
+		if total_matches_current_hadith == len(current_hadith_narrators_list):
 			sanad_level_match_count += 1
 
 		# Per-hadith log entry
 		output = (
 			f"\n🔹sequence_num: {sequence_num}/{total_num_hadith}\n"
-			f"Hadith: {key}\n"
-			f"Extracted sanad: {extracted_sanad}\n"
-			f"Validation dataset:    {val_ds_narr_names}\n"
-			f"✅ Matched {matches}/{len(final_extracted)} narrators\n"
+			f"Hadith location: {key}\n"
+			f"Extracted narrator names:		{extracted_sanad}\n"
+			f"Validation narrator names:	{val_ds_narr_names}\n"
+			f"✅ Matched {match_counter}/{len(predicted_narr_names_excluding_prophet)} narrators\n"
 		)
 		if prophet_names:
 			output += f"ℹ️ Prophet name(s) detected & ignored: {prophet_names}\n"
@@ -507,22 +508,21 @@ with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", 
 		f1.write(output)
 		f2.write(output)
 
-	for key, value in sorted(predicted_narr_names_unique.items(), key=lambda item: item[1], reverse=True):
-		print(key, value)
+	# print unique predicted names in descending order of name count
+	# for key, value in sorted(predicted_narr_names_unique.items(), key=lambda item: item[1], reverse=True):
+	# 	print(key, value)
 
 	# Final metrics
-	print("total_predicted_narrator_count: ", total_predicted_narrator_count)
-	print("len(predicted_narr_names_unique): ", len(predicted_narr_names_unique))
-	narr_level_accuracy = total_matched / total_predicted_narrator_count if total_predicted_narrator_count else 0.0
+	narr_level_accuracy = total_matched / len_predict_narr_name_ex if len_predict_narr_name_ex else 0.0
 	repeated_narr_count = sum(value for value in predicted_narr_names_unique.values()) - len(predicted_narr_names_unique)
-	print("repeated_narr_count: ", repeated_narr_count)
+	# print("repeated_narr_count: ", repeated_narr_count)
 	unique_narrname_narr_level_accuracy = (total_matched-repeated_narr_count) / len(predicted_narr_names_unique) if len(predicted_narr_names_unique) else 0.0
 	sanad_level_accuracy = (sanad_level_match_count / total_num_hadith) if results else 0.0
 
 	summary = (
 		"\n=== Evaluation Metrics ===\n"
-		f"🔸 narrator-level accuracy:                        {narr_level_accuracy:.2f} ({total_matched}/{total_predicted_narrator_count})\n"
-		f"🔸 unique-narratorname narraror-level accuracy:    {unique_narrname_narr_level_accuracy:.2f} ({total_matched-repeated_narr_count}/{len(predicted_narr_names_unique)})\n"
+		f"🔸 narrator-level accuracy:                        {narr_level_accuracy:.2f} ({total_matched}/{len_predict_narr_name_ex})\n"
+		#f"🔸 unique-narrator-name narrator-level accuracy:    {unique_narrname_narr_level_accuracy:.2f} ({total_matched-repeated_narr_count}/{len(predicted_narr_names_unique)})\n"
 		f"🔸 sanad-level accuracy:                           {sanad_level_accuracy:.2f} ({sanad_level_match_count}/{total_num_hadith})\n"
 	)
 	print(summary)
