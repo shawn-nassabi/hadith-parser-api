@@ -487,7 +487,7 @@ with open(output_file_1, "w", encoding="utf-8") as f1, open(output_file_2, "w", 
 		unique_narrname_count += len(unique_val_ds_narr_names)
 		total_matched += matches
 
-		if matches == len(unique_val_ds_narr_names) and total_predicted_narrator_count == len(unique_val_ds_narr_names):
+		if matches == len(unique_val_ds_narr_names) and len(final_extracted) == len(unique_val_ds_narr_names):
 			sanad_level_match_count += 1
 
 		# Per-hadith log entry
